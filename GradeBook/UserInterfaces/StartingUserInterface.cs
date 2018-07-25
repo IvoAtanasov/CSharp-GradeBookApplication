@@ -43,8 +43,8 @@ namespace GradeBook.UserInterfaces
             BaseGradeBook gradeBook = null; ;
             switch (type)
             {
-                case "StandardGradeBook": gradeBook = new StandardGradeBook(name); break;
-                case "RankedGradeBook": gradeBook = new RankedGradeBook(name); break;
+                case "standard": gradeBook = new StandardGradeBook(name); break;
+                case "ranked": gradeBook = new RankedGradeBook(name); break;
                 default: Console.WriteLine(type + " is not a supported type of gradebook, please try again"); break;
 
             }
