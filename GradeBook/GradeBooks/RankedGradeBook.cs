@@ -22,6 +22,10 @@ namespace GradeBook.GradeBooks
             int BGradeNumber = (studentCount / 5) * 2;
             int CGradeNumber = (studentCount / 5) * 3;
             int DGradeNumber = (studentCount / 5) * 4;
+            if (studentCount < 5)
+            {
+                throw new InvalidOperationException("Ranked-grading requires a minimum of 5 students to work");
+            }
             if (gradeList.Take(AGradeNumber).Contains(averageGrade))
             {
                 return 'A';
@@ -38,10 +42,7 @@ namespace GradeBook.GradeBooks
             {
                 return 'D';
             }
-            if (studentCount < 5)
-            {
-                throw new InvalidOperationException("Ranked-grading requires a minimum of 5 students to work");
-            }
+           
             return 'F';
         }
     }
