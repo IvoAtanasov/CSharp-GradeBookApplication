@@ -18,27 +18,28 @@ namespace GradeBook.GradeBooks
             List<double> gradeList = Students.Select(x => x.AverageGrade).ToList();
             gradeList=gradeList.OrderByDescending(g=>g).ToList();
             int studentCount = Students.Count;
-            int AGradeNumber = studentCount / 5;
-            int BGradeNumber = (studentCount / 5) * 2;
-            int CGradeNumber = (studentCount / 5) * 3;
-            int DGradeNumber = (studentCount / 5) * 4;
+            int TwentyPrecent = studentCount / 5;
+            
             if (studentCount < 5)
             {
                 throw new InvalidOperationException("Ranked-grading requires a minimum of 5 students to work");
             }
-            if (gradeList.Take(AGradeNumber).Contains(averageGrade))
+            if (gradeList.Take(TwentyPrecent).Contains(averageGrade))
             {
                 return 'A';
             }
-            if (gradeList.Skip(AGradeNumber).Take(BGradeNumber).Contains(averageGrade))
+            gradeList.Skip(TwentyPrecent);
+            if (gradeList.Take(TwentyPrecent).Contains(averageGrade))
             {
                 return 'B';
             }
-            if (gradeList.Skip(BGradeNumber).Take(CGradeNumber).Contains(averageGrade))
+            gradeList.Skip(TwentyPrecent);
+            if (gradeList.Take(TwentyPrecent).Contains(averageGrade))
             {
                 return 'C';
             }
-            if (gradeList.Skip(CGradeNumber).Take(DGradeNumber).Contains(averageGrade))
+            gradeList.Skip(TwentyPrecent);
+            if (gradeList.Take(TwentyPrecent).Contains(averageGrade))
             {
                 return 'D';
             }
